@@ -1,7 +1,9 @@
+"use client"
 import React from 'react'
 import { mockProperties } from "../../data/mockdata";
 import { ArrowRight, Home as HomeIcon, TrendingUp, Map, Bell, Search } from 'lucide-react';
 import PropertyCard from '../PropertyCard';
+import SearchBar from '../UI/SearchBar';
 
 export default function HomePage() {
       const properties = mockProperties.slice(0,3);
@@ -19,12 +21,7 @@ export default function HomePage() {
             Visualize property price changes over time and make informed decisions with real-time market insights.
           </p>
           <div className="md:w-2/3">
-          <Search/>
-            <input
-              type="text"
-              placeholder="Search for properties..."
-              className="w-[40%] px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] transition duration-200"
-            />
+          <SearchBar />
           </div>
         </div>
       </section>
