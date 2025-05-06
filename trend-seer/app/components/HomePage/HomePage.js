@@ -22,7 +22,7 @@ export default function HomePage() {
                 ></div>
                 <div className="relative z-20 mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="md:max-w-3xl lg:max-w-4xl">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-fade">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-fade-in">
                       Find Your Dream Property With Ease
                     </h1>
                     <p className="text-xl text-gray-300 mb-8 animate-fade-in delay-100">
