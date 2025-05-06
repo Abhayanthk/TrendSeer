@@ -1,83 +1,143 @@
 "use client"
-import React from 'react'
-import { mockProperties } from "../../data/mockdata";
-import { ArrowRight, Home as HomeIcon, TrendingUp, Map, Bell, Search } from 'lucide-react';
-import PropertyCard from '../PropertyCard';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { Search, Home as HomeIcon, ArrowRight, MapPin, Bed, Bath, Square, Calculator, User } from 'lucide-react';
+import { sampleProperties } from '../../data/sampleProperties';
+import PropertyCard from '../cards/PropertyCard';
 import SearchBar from '../UI/SearchBar';
 
 export default function HomePage() {
-      const properties = mockProperties.slice(0,3);
-      console.log(properties)
-  return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative h-[500px] rounded-2xl overflow-hidden bg-gradient-to-r from-[#1A365D] to-[#2C5282]">
-        <div className="absolute inset-0 opacity-30 bg-[url('https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] bg-center bg-cover"></div>
-        <div className="relative h-full flex flex-col justify-center px-6 md:px-12 z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:w-2/3">
-            Track Real Estate Trends <span className="text-[#F59E0B]">Like Never Before</span>
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-8 md:w-2/3">
-            Visualize property price changes over time and make informed decisions with real-time market insights.
-          </p>
-          <div className="md:w-2/3">
-          <SearchBar />
-          </div>
-        </div>
-      </section>
-      {/* Features Section */}
-      <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { icon: <HomeIcon size={24} />, title: "Track Properties", 
-              description: "Monitor price changes for properties you're interested in" },
-            { icon: <TrendingUp size={24} />, title: "Visualize Trends", 
-              description: "See how property values change over time with interactive charts" },
-            { icon: <Map size={24} />, title: "Market Insights", 
-              description: "Get detailed insights for specific regions and neighborhoods" },
-            { icon: <Bell size={24} />, title: "Price Alerts", 
-              description: "Set up notifications for price changes on your favorite properties" }
-          ].map((feature, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all duration-300 hover:shadow-md">
-              <div className="p-3 bg-[#EBF4FF] rounded-full inline-block mb-4 text-[#1A365D]">
-                {feature.icon}
-              </div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+      const properties = sampleProperties.slice(0,3);
+      return (
+            <div className="flex flex-col w-full">
+              {/* Hero Section */}
+              <section className="relative h-[90vh] flex items-center">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#121212] z-10"></div>
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ 
+                    backgroundImage: 'url(https://images.pexels.com/photos/1612351/pexels-photo-1612351.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)', 
+                    filter: 'brightness(0.4)'
+                  }}
+                ></div>
+                <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                  <div className="md:max-w-3xl lg:max-w-4xl">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-fade-in">
+                      Find Your Dream Property With Ease
+                    </h1>
+                    <p className="text-xl text-gray-300 mb-8 animate-fade-in delay-100">
+                      Browse through thousands of properties and find the perfect home with our advanced search tools and mortgage calculator.
+                    </p>
+                    <div className="w-full max-w-3xl bg-[#1A1A1A]/90 backdrop-blur-sm rounded-lg shadow-xl p-4 animate-fade-in delay-200">
+                      <SearchBar />
+                    </div>
+                    {/* <div className="mt-8 flex flex-wrap gap-4 animate-fade-in delay-300">
+                      <Link 
+                        to="/mortgage-calculator" 
+                        className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md inline-flex items-center transition-all duration-300 shadow-lg hover:shadow-purple-600/20"
+                      >
+                        <Calculator size={20} className="mr-2" />
+                        Mortgage Calculator
+                      </Link>
+                      <Link 
+                        to="/auth" 
+                        className="bg-transparent border border-gray-300 text-white hover:bg-white/10 px-6 py-3 rounded-md inline-flex items-center transition-all duration-300"
+                      >
+                        <User size={20} className="mr-2" />
+                        Create Account
+                      </Link>
+                    </div> */}
+                  </div>
+                </div>
+              </section>
+        
+              {/* Featured Properties */}
+              <section className="py-16 bg-[#121212]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="flex justify-between items-center mb-10">
+                    <h2 className="text-3xl font-bold text-white">Featured Properties</h2>
+                    <Link href="/" className="text-purple-400 hover:text-purple-300 inline-flex items-center transition-colors duration-200">
+                      View all
+                      <ArrowRight size={16} className="ml-2" />
+                    </Link>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {properties.map((property) => (
+                      <PropertyCard key={property.id} property={property} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+        
+              {/* Why Choose Us */}
+              <section className="py-16 bg-[#1A1A1A]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="text-center mb-16">
+                    <h2 className="text-3xl font-bold text-white mb-4">Why Choose EstateEase</h2>
+                    <p className="text-gray-400 max-w-3xl mx-auto">
+                      We make finding and financing your dream home simple, transparent, and stress-free.
+                    </p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="bg-[#232323] rounded-lg p-6 transition-transform duration-300 hover:transform hover:scale-105">
+                      <div className="w-14 h-14 bg-purple-900/30 rounded-full flex items-center justify-center mb-6">
+                        {/* <Search className="h-7 w-7 text-purple-400" /> */}
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-3">Advanced Search</h3>
+                      <p className="text-gray-400">
+                        Find exactly what you're looking for with our powerful search filters and detailed property information.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-[#232323] rounded-lg p-6 transition-transform duration-300 hover:transform hover:scale-105">
+                      <div className="w-14 h-14 bg-purple-900/30 rounded-full flex items-center justify-center mb-6">
+                        {/* <Calculator className="h-7 w-7 text-purple-400" /> */}
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-3">Mortgage Tools</h3>
+                      <p className="text-gray-400">
+                        Plan your finances with precision using our comprehensive mortgage calculator and loan comparison tools.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-[#232323] rounded-lg p-6 transition-transform duration-300 hover:transform hover:scale-105">
+                      <div className="w-14 h-14 bg-purple-900/30 rounded-full flex items-center justify-center mb-6">
+                        <User className="h-7 w-7 text-purple-400" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-3">Personalized Dashboard</h3>
+                      <p className="text-gray-400">
+                        Keep track of your favorite properties, saved searches, and mortgage calculations in one convenient place.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+        
+              {/* Call to Action */}
+              <section className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                  <h2 className="text-3xl font-bold text-white mb-6">Ready to Find Your Dream Home?</h2>
+                  <p className="text-xl text-purple-200 mb-8 max-w-3xl mx-auto">
+                    Join thousands of satisfied customers who found their perfect property with EstateEase.
+                  </p>
+                  {/* <div className="flex flex-wrap justify-center gap-4">
+                    <Link 
+                      to="/auth" 
+                      className="bg-white text-purple-900 hover:bg-purple-100 px-8 py-3 rounded-md inline-flex items-center transition-all duration-300 shadow-xl"
+                    >
+                      Get Started
+                      <ArrowRight size={16} className="ml-2" />
+                    </Link>
+                    <Link 
+                      to="/mortgage-calculator" 
+                      className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-md inline-flex items-center transition-all duration-300"
+                    >
+                      Try Mortgage Calculator
+                    </Link>
+                  </div> */}
+                </div>
+              </section>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Properties */}
-      <section>
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Featured Properties</h2>
-          {/* <Link to="/dashboard" className="text-[#0D9488] hover:text-[#0F766E] flex items-center font-medium">
-            View all <ArrowRight size={16} className="ml-1" />
-          </Link> */}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {properties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-[#EBF4FF] rounded-2xl p-8 md:p-12">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1A365D] mb-4">
-            Ready to make smarter real estate decisions?
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Start tracking properties today and get insights that will help you make better investment choices.
-          </p>
-          {/* <Link to="/dashboard" className="inline-block bg-[#0D9488] hover:bg-[#0F766E] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200">
-            Get Started
-          </Link> */}
-        </div>
-      </section>
-    </div>
-  )
+          )
 }
