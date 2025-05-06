@@ -31,22 +31,22 @@ export default function HomePage() {
                     <div className="w-full max-w-3xl bg-[#1A1A1A]/90 backdrop-blur-sm rounded-lg shadow-xl p-4 animate-fade-in delay-200">
                       <SearchBar />
                     </div>
-                    {/* <div className="mt-8 flex flex-wrap gap-4 animate-fade-in delay-300">
+                    <div className="mt-8 flex flex-wrap gap-4 animate-fade-in delay-300">
                       <Link 
-                        to="/mortgage-calculator" 
+                        href={"#"}
                         className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md inline-flex items-center transition-all duration-300 shadow-lg hover:shadow-purple-600/20"
                       >
                         <Calculator size={20} className="mr-2" />
                         Mortgage Calculator
                       </Link>
                       <Link 
-                        to="/auth" 
+                        href={"#"}
                         className="bg-transparent border border-gray-300 text-white hover:bg-white/10 px-6 py-3 rounded-md inline-flex items-center transition-all duration-300"
                       >
                         <User size={20} className="mr-2" />
                         Create Account
                       </Link>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </section>
@@ -83,7 +83,7 @@ export default function HomePage() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="bg-[#232323] rounded-lg p-6 transition-transform duration-300 hover:transform hover:scale-105">
                       <div className="w-14 h-14 bg-purple-900/30 rounded-full flex items-center justify-center mb-6">
-                        {/* <Search className="h-7 w-7 text-purple-400" /> */}
+                        <Search className="h-7 w-7 text-purple-400" />
                       </div>
                       <h3 className="text-xl font-semibold text-white mb-3">Advanced Search</h3>
                       <p className="text-gray-400">
@@ -93,7 +93,7 @@ export default function HomePage() {
                     
                     <div className="bg-[#232323] rounded-lg p-6 transition-transform duration-300 hover:transform hover:scale-105">
                       <div className="w-14 h-14 bg-purple-900/30 rounded-full flex items-center justify-center mb-6">
-                        {/* <Calculator className="h-7 w-7 text-purple-400" /> */}
+                        <Calculator className="h-7 w-7 text-purple-400" />
                       </div>
                       <h3 className="text-xl font-semibold text-white mb-3">Mortgage Tools</h3>
                       <p className="text-gray-400">
@@ -121,21 +121,21 @@ export default function HomePage() {
                   <p className="text-xl text-purple-200 mb-8 max-w-3xl mx-auto">
                     Join thousands of satisfied customers who found their perfect property with EstateEase.
                   </p>
-                  {/* <div className="flex flex-wrap justify-center gap-4">
+                  <div className="flex flex-wrap justify-center gap-4">
                     <Link 
-                      to="/auth" 
+                      href={"#"}
                       className="bg-white text-purple-900 hover:bg-purple-100 px-8 py-3 rounded-md inline-flex items-center transition-all duration-300 shadow-xl"
                     >
                       Get Started
                       <ArrowRight size={16} className="ml-2" />
                     </Link>
                     <Link 
-                      to="/mortgage-calculator" 
+                         href={"#"}
                       className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-md inline-flex items-center transition-all duration-300"
                     >
                       Try Mortgage Calculator
                     </Link>
-                  </div> */}
+                  </div>
                 </div>
               </section>
             </div>
