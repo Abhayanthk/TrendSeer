@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Search, Home as HomeIcon, ArrowRight, MapPin, Bed, Bath, Square, Calculator, User } from 'lucide-react';
 import { sampleProperties } from '../../data/sampleProperties';
@@ -7,7 +7,7 @@ import PropertyCard from '../cards/PropertyCard';
 import SearchBar from '../UI/SearchBar';
 
 export default function HomePage() {
-      const properties = sampleProperties.slice(0,3);
+      const properties = sampleProperties;
       return (
             <div className="flex flex-col w-full">
               {/* Hero Section */}
@@ -20,9 +20,9 @@ export default function HomePage() {
                     filter: 'brightness(0.4)'
                   }}
                 ></div>
-                <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="relative z-20 mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="md:max-w-3xl lg:max-w-4xl">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-fade-in">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-fade">
                       Find Your Dream Property With Ease
                     </h1>
                     <p className="text-xl text-gray-300 mb-8 animate-fade-in delay-100">
