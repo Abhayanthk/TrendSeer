@@ -6,26 +6,15 @@ import { Home, User, Calculator, Menu, X, LogOut } from 'lucide-react';
 
 const NavBar = () => {
       const [isMenuOpen, setIsMenuOpen] = useState(false);
-      // const { isAuthenticated, logout, user } = useAuth();
       const location = usePathname();
-    
-      const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-      };
-    
       const closeMenu = () => {
         setIsMenuOpen(false);
       };
     
-      const handleLogout = () => {
-        logout();
-        closeMenu();
-      };
-    
+
       const navLinks = [
             { path: '/', name: 'Home', icon: <Home size={20} /> },
-            { path: '/mortgage-calculator', name: 'Mortgage Calculator', icon: <Calculator size={20} /> },
-            // { path: isAuthenticated ? '/dashboard' : '/auth', name: isAuthenticated ? 'Dashboard' : 'Login / Register', icon: <User size={20} /> },
+            { path: '/mortgage-calculator', name: 'Mortgage Calculator', icon: <Calculator size={20} /> }
           ];
       return (
             <nav className="bg-[#1A1A1A] sticky top-0 z-50 border-b border-gray-800 shadow-md">
@@ -54,16 +43,6 @@ const NavBar = () => {
                         <span className="ml-2">{link.name}</span>
                       </Link>
                     ))}
-                    
-                    {/* {isAuthenticated && (
-                      <button
-                        onClick={handleLogout}
-                        className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-purple-400 hover:bg-[#232323] transition-colors duration-200"
-                      >
-                        <LogOut size={20} />
-                        <span className="ml-2">Logout</span>
-                      </button>
-                    )} */}
                   </div>
                 </div>
               </div>

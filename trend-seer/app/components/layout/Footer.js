@@ -10,7 +10,7 @@ export default function Footer() {
                   <div className="col-span-1 md:col-span-1">
                     <Link href="/" className="flex items-center mb-4">
                       <Home className="h-8 w-8 text-purple-500" />
-                      <span className="ml-2 text-xl font-semibold text-white">EstateEase</span>
+                      <span className="ml-2 text-xl font-semibold text-white">TrendSeer</span>
                     </Link>
                     <p className="text-gray-400 text-sm">
                       Your trusted partner in finding the perfect property and planning your mortgage.
@@ -78,7 +78,7 @@ export default function Footer() {
                 
                 <div className="border-t border-gray-800 mt-12 pt-8">
                   <p className="text-gray-500 text-sm text-center">
-                    © {new Date().getFullYear()} EstateEase. All rights reserved.
+                    © {new Date().getFullYear()} TrendSeer. All rights reserved.
                   </p>
                 </div>
               </div>

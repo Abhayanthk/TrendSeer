@@ -1,8 +1,10 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { MapPin, Bed, Bath, Square, Heart, Clock } from 'lucide-react';
 export default function PropertyCard({property}) {
+      const [isSaved, setIsSaved] = useState(false);
       const formatCurrency = (value) => {
             return new Intl.NumberFormat('en-US', {
               style: 'currency',
@@ -14,7 +16,7 @@ export default function PropertyCard({property}) {
           
   return (
       <div className="bg-[#1A1A1A] rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:shadow-xl hover:shadow-purple-900/10 group">
-      <Link href={"#"}>
+      <Link href={"/"}>
         <div className="relative h-56 overflow-hidden">
           <img
             src={property.images[0]}
@@ -27,12 +29,8 @@ export default function PropertyCard({property}) {
               {property.status === 'for sale' ? 'For Sale' : property.status === 'for rent' ? 'For Rent' : property.status === 'pending' ? 'Pending' : 'Sold'}
             </span>
           </div>
-          {/* <button 
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              saveProperty(property.id);
-            }}
+          <button 
+                  onClick = {() => setIsSaved(!isSaved)}
             className={`absolute top-3 right-3 p-2 rounded-full transition-colors duration-200 ${
               isSaved 
                 ? 'text-red-400 bg-red-400/10' 
@@ -40,7 +38,7 @@ export default function PropertyCard({property}) {
             }`}
           >
             <Heart className={`h-5 w-5 ${isSaved ? 'fill-current' : ''}`} />
-          </button> */}
+          </button>
         </div>
       </Link>
     
@@ -49,7 +47,7 @@ export default function PropertyCard({property}) {
         {property.status === 'for rent' && <span className="text-gray-400 text-sm ml-1">/ month</span>}
     
         <h3 className="text-lg font-semibold text-white mt-1 group-hover:text-purple-400 transition-colors duration-200">
-          <Link href={"#"}>{property.title}</Link>
+          <Link href={"/"}>{property.title}</Link>
         </h3>
     
         <div className="flex items-center text-gray-400 text-sm mt-2">
@@ -76,7 +74,7 @@ export default function PropertyCard({property}) {
           <div className="flex items-center text-gray-500 text-xs">
             <Clock className="h-3 w-3 mr-1" />
           </div>
-          <Link href={"#"} className="text-purple-400 text-sm font-medium hover:text-purple-300 transition-colors duration-200">
+          <Link href={"/"} className="text-purple-400 text-sm font-medium hover:text-purple-300 transition-colors duration-200">
             View Details
           </Link>
         </div>

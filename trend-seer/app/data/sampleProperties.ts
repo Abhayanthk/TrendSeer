@@ -28,6 +28,7 @@ export const sampleProperties = [
           phone: '(555) 123-4567'
         }
       },
+      
       {
         id: '2',
         title: 'Spacious Family Home with Garden',

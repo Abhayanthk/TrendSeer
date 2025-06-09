@@ -20,12 +20,12 @@ export default function HomePage() {
                     filter: 'brightness(0.4)'
                   }}
                 ></div>
-                <div className="relative z-20 mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="relative z-20 mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
                   <div className="md:max-w-3xl lg:max-w-4xl">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-fade-in">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight ">
                       Find Your Dream Property With Ease
                     </h1>
-                    <p className="text-xl text-gray-300 mb-8 animate-fade-in delay-100">
+                    <p className="text-xl text-gray-300 mb-8 ">
                       Browse through thousands of properties and find the perfect home with our advanced search tools and mortgage calculator.
                     </p>
                     <div className="w-full max-w-3xl bg-[#1A1A1A]/90 backdrop-blur-sm rounded-lg shadow-xl p-4 animate-fade-in delay-200">
