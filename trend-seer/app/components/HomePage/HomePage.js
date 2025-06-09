@@ -33,7 +33,7 @@ export default function HomePage() {
                     </div>
                     <div className="mt-8 flex flex-wrap gap-4 animate-fade-in delay-300">
                       <Link 
-                        href={"#"}
+                        href={"/mortgage-calculator"}
                         className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md inline-flex items-center transition-all duration-300 shadow-lg hover:shadow-purple-600/20"
                       >
                         <Calculator size={20} className="mr-2" />

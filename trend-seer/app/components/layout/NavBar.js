@@ -21,19 +21,19 @@ const NavBar = () => {
               <div className=" mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                   <div className="flex items-center">
-                    <Link href="#" className="flex items-center" onClick={closeMenu}>
+                    <Link href="/" className="flex items-center" onClick={closeMenu}>
                       <Home className="h-8 w-8 text-purple-500" />
                       <span className="ml-2 text-xl font-semibold text-white hover:text-purple-500">TrendSeer</span>
                     </Link>
                   </div>
          
-         
+
                   {/* Desktop Navigation */}
                   <div className="hidden md:flex md:items-center md:space-x-8">
                     {navLinks.map((link) => (
                       <Link
                         key={link.path}
-                        href={"#"}
+                        href={link.path}
                         className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 
                           ${location.pathname === link.path 
                             ? 'text-purple-400 bg-[#232323]' 
