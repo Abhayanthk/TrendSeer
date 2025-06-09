@@ -26,7 +26,8 @@ const NavBar = () => {
                       <span className="ml-2 text-xl font-semibold text-white hover:text-purple-500">TrendSeer</span>
                     </Link>
                   </div>
-        
+         
+         
                   {/* Desktop Navigation */}
                   <div className="hidden md:flex md:items-center md:space-x-8">
                     {navLinks.map((link) => (
