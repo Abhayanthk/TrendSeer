@@ -8,21 +8,35 @@ import PropertyCard from '../components/cards/PropertyCard';
 import SearchBar from '../components/UI/SearchBar';
 import { getAllProperties } from '../data/sampleProperties';
 
+
+
 export default function PropertiesPage() {
-  const searchParams = useSearchParams();
+
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState('grid');
   const [sortBy, setSortBy] = useState('price-asc');
   const [showFilters, setShowFilters] = useState(false);
+
+
+  // Get initial search term from URL params
+  const searchParams = useSearchParams();
+  const initialSearchTerm = searchParams.get("searchTerm") || "";
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
+  
   
   // Filter states
   const [priceRange, setPriceRange] = useState([0, 10000000]);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [bedroomFilter, setBedroomFilter] = useState('');
   const [bathroomFilter, setBathroomFilter] = useState('');
-  
+
+      // Handle search term from SearchBar
+  const handleSearch = (term) => {
+      setSearchTerm(term);
+    };
+    
   useEffect(() => {
     // Get initial filters from URL params
     const filters = {
@@ -82,10 +96,18 @@ export default function PropertiesPage() {
         default:
           return 0;
       }
+      
     });
+      // Apply search term filter
+      if (searchTerm) {
+            filtered = filtered.filter(property =>
+              property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              property.location.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+          }          
     
     setFilteredProperties(filtered);
-  }, [properties, priceRange, selectedTypes, bedroomFilter, bathroomFilter, sortBy]);
+  }, [properties, priceRange, selectedTypes, bedroomFilter, bathroomFilter, sortBy, searchTerm]);
   
   const propertyTypes = ['house', 'apartment', 'condo', 'penthouse', 'villa', 'loft', 'townhouse', 'estate'];
   
@@ -124,7 +146,7 @@ export default function PropertiesPage() {
           </div>
           
           <div className="animate-fade-in">
-            <SearchBar />
+            <SearchBar onSearch = {handleSearch}/>
           </div>
         </div>
       </div>

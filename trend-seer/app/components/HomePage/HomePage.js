@@ -5,8 +5,16 @@ import { Search, Home as HomeIcon, ArrowRight, MapPin, Bed, Bath, Square, Calcul
 import { getFeaturedProperties , getAllProperties} from '../../data/sampleProperties';
 import PropertyCard from '../cards/PropertyCard';
 import SearchBar from '../UI/SearchBar';
+import { useRouter } from 'next/navigation';
+
 
 export default function HomePage() {
+      const router = useRouter();
+
+      const handleSearch = (query) => {
+      router.push(`/viewProperty?searchTerm=${encodeURIComponent(query)}`);
+      };
+
       const properties = getFeaturedProperties();
       return (
             <div className="flex flex-col w-full">
@@ -29,7 +37,7 @@ export default function HomePage() {
                       Browse through thousands of properties and find the perfect home with our advanced search tools and mortgage calculator.
                     </p>
                     <div className="w-full max-w-3xl bg-[#1A1A1A]/90 backdrop-blur-sm rounded-lg shadow-xl p-4 animate-fade-in delay-200">
-                      <SearchBar />
+                      <SearchBar onSearch={handleSearch}/>
                     </div>
                     <div className="mt-8 flex flex-wrap gap-4 animate-fade-in delay-300">
                       <Link 
