@@ -2,12 +2,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { Search, Home as HomeIcon, ArrowRight, MapPin, Bed, Bath, Square, Calculator, User } from 'lucide-react';
-import { sampleProperties } from '../../data/sampleProperties';
+import { getFeaturedProperties , getAllProperties} from '../../data/sampleProperties';
 import PropertyCard from '../cards/PropertyCard';
 import SearchBar from '../UI/SearchBar';
 
 export default function HomePage() {
-      const properties = sampleProperties;
+      const properties = getFeaturedProperties();
       return (
             <div className="flex flex-col w-full">
               {/* Hero Section */}
@@ -56,7 +56,7 @@ export default function HomePage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="flex justify-between items-center mb-10">
                     <h2 className="text-3xl font-bold text-white">Featured Properties</h2>
-                    <Link href="/" className="text-purple-400 hover:text-purple-300 inline-flex items-center transition-colors duration-200">
+                    <Link href="/viewProperty" className="text-purple-400 hover:text-purple-300 inline-flex items-center transition-colors duration-200">
                       View all
                       <ArrowRight size={16} className="ml-2" />
                     </Link>
@@ -79,7 +79,7 @@ export default function HomePage() {
                       We make finding and financing your dream home simple, transparent, and stress-free.
                     </p>
                   </div>
-                  
+                  {/* Feature Cards*/}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="bg-[#232323] rounded-lg p-6 transition-transform duration-300 hover:transform hover:scale-105">
                       <div className="w-14 h-14 bg-purple-900/30 rounded-full flex items-center justify-center mb-6">
@@ -130,7 +130,7 @@ export default function HomePage() {
                       <ArrowRight size={16} className="ml-2" />
                     </Link>
                     <Link 
-                         href={"#"}
+                         href={"/mortgage-calculator"}
                       className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-md inline-flex items-center transition-all duration-300"
                     >
                       Try Mortgage Calculator
