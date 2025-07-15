@@ -1,9 +1,27 @@
 import React, { useState , useEffect} from 'react';
+import { useRouter } from 'next/navigation';
+
 import { Search, Filter } from 'lucide-react';
 
-export default function SearchBar({onSearch}) {
+export default function SearchBar({query = "", onSearch}) {
   // State to manage the search query
-  const [query, setQuery] = useState('');
+  const [input, setInput] = useState(query);
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (onSearch) {
+      onSearch(query); // Local filtering
+    } else {
+      // Navigate to filtered page
+      router.push(`/viewProperty?search=${encodeURIComponent(input)}`);
+    }
+  };
+  const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        handleSearch();
+      }
+    };
+  
 
   return (
     <div className="w-full">
@@ -13,13 +31,9 @@ export default function SearchBar({onSearch}) {
         </div>
         <input
           type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              onSearch(query); // 💥 Fire the search
-            }
-          }}        
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Enter location, property name, or keyword..."
           className="w-full pl-10 pr-20 py-3 bg-[#232323] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200"
         />
@@ -27,7 +41,7 @@ export default function SearchBar({onSearch}) {
           <button
             type="submit"
             className="h-full px-5 rounded-r-lg bg-purple-600 hover:bg-purple-700 text-white font-medium transition-colors duration-200"
-            onClick = {() => onSearch(query)}
+            onClick = {() => handleSearch()}
           >
             Search
           </button>

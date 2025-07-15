@@ -21,10 +21,13 @@ export default function PropertiesPage() {
 
 
   // Get initial search term from URL params
+  const [searchTerm, setSearchTerm] = useState('')
   const searchParams = useSearchParams();
-  const initialSearchTerm = searchParams.get("searchTerm") || "";
-  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
-  
+  const searchTermFromURL = searchParams.get('search') || '';
+  useEffect(() => {
+      setSearchTerm(searchTermFromURL); // Sync with search param
+    }, [searchTermFromURL]);
+      
   
   // Filter states
   const [priceRange, setPriceRange] = useState([0, 10000000]);
@@ -33,9 +36,9 @@ export default function PropertiesPage() {
   const [bathroomFilter, setBathroomFilter] = useState('');
 
       // Handle search term from SearchBar
-  const handleSearch = (term) => {
-      setSearchTerm(term);
-    };
+//   const handleSearch = (term) => {
+//       setSearchTerm(term);
+//     };
     
   useEffect(() => {
     // Get initial filters from URL params
@@ -104,7 +107,8 @@ export default function PropertiesPage() {
               property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
               property.location.toLowerCase().includes(searchTerm.toLowerCase())
             );
-          }          
+          }      
+          
     
     setFilteredProperties(filtered);
   }, [properties, priceRange, selectedTypes, bedroomFilter, bathroomFilter, sortBy, searchTerm]);
@@ -146,7 +150,7 @@ export default function PropertiesPage() {
           </div>
           
           <div className="animate-fade-in">
-            <SearchBar onSearch = {handleSearch}/>
+            <SearchBar query={searchTerm}/>
           </div>
         </div>
       </div>
