@@ -88,10 +88,12 @@ const NavBar = () => {
             {/* Profile Info */}
             {user && (
               <div className="flex items-center ml-4 gap-2">
-                <img
+                <Image
                   src={user.photoURL}
                   alt="Profile"
-                  className="w-8 h-8 rounded-full border-2 border-purple-500"
+                  width={32}
+                  height={32}                
+                  className="rounded-full border-2 border-purple-500"
                 />
                 {console.log("👤 PhotoURL:", user?.photoURL)}
                 <span className="text-sm text-white font-medium">{user.displayName}</span>
