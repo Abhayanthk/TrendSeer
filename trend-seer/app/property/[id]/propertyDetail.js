@@ -58,19 +58,28 @@ export default function PropertyDetail({ property }) {
     setIsFavorited(!isFavorited);
   };
   
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: property.title,
-        text: `Check out this property: ${property.title}`,
-        url: window.location.href,
-      });
-    } else {
-      // Fallback for browsers that don't support Web Share API
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
-    }
-  };
+  const handleShare = async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: property.title,
+            text: `Check out this property: ${property.title}`,
+            url: window.location.href,
+          });
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('Link copied to clipboard!');
+        }
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          // User cancelled sharing – ignore silently or log for dev
+          console.log('Share was canceled by the user.');
+        } else {
+          console.error('Share failed:', error);
+          alert('Could not share. Please try again!');      
+        }
+      }
+    };    
   
   if (!property) {
     return (

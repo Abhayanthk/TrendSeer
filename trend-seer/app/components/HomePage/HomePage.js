@@ -9,11 +9,7 @@ import { useRouter } from 'next/navigation';
 
 
 export default function HomePage() {
-      // const router = useRouter();
 
-      // const handleSearch = (query) => {
-      // router.push(`/viewProperty?searchTerm=${encodeURIComponent(query)}`);
-      // };
 
       const properties = getFeaturedProperties();
       return (
