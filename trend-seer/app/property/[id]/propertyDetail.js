@@ -11,6 +11,7 @@ import {
 import NavBar from '../../components/layout/NavBar';
 import Footer from '../../components/layout/Footer';
 import { getAllProperties } from '../../data/sampleProperties';
+import PropertyCard from '../../components/cards/PropertyCard';
 
 export default function PropertyDetail({ property }) {
   const [activeImage, setActiveImage] = useState(0);
@@ -105,6 +106,7 @@ export default function PropertyDetail({ property }) {
   }
   
   const properties = getAllProperties();
+  console.log(properties)
   
   return (
     <>
@@ -407,56 +409,16 @@ export default function PropertyDetail({ property }) {
               </div>
             </div>
           </div>
-          
+
           {/* Similar Properties */}
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-white mb-6">Similar Properties</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {properties
-                .filter(p => p.id !== property.id && p.type === property.type)
                 .slice(0, 3)
-                .map(similarProperty => (
-                  <div key={similarProperty.id} className="bg-[#1A1A1A] rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 group">
-                    <Link href={`/property/${similarProperty.id}`}>
-                      <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={similarProperty.images[0]}
-                          alt={similarProperty.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          fill
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                        <div className="absolute bottom-4 left-4">
-                          <p className="text-white font-bold text-lg">{formatCurrency(similarProperty.price)}</p>
-                        </div>
-                      </div>
-                    </Link>
-                    
-                    <div className="p-4">
-                      <h3 className="text-white font-medium mb-2 group-hover:text-purple-400 transition-colors duration-200">
-                        <Link href={`/property/${similarProperty.id}`}>{similarProperty.title}</Link>
-                      </h3>
-                      <div className="flex items-center text-gray-400 text-sm mb-3">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        <span>{similarProperty.location}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-gray-300 text-sm">
-                        <div className="flex items-center">
-                          <Bed className="h-4 w-4 mr-1" />
-                          <span>{similarProperty.bedrooms} bd</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Bath className="h-4 w-4 mr-1" />
-                          <span>{similarProperty.bathrooms} ba</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Square className="h-4 w-4 mr-1" />
-                          <span>{similarProperty.area} sq ft</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                .map((similarProperty) =>{
+                  return <PropertyCard key = {similarProperty.id} property = {similarProperty} />
+                })}
             </div>
           </div>
         </div>
