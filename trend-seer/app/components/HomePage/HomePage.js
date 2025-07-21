@@ -35,7 +35,7 @@ export default function HomePage() {
                     <div className="w-full max-w-3xl bg-[#1A1A1A]/90 backdrop-blur-sm rounded-lg shadow-xl p-4 animate-fade-in delay-200">
                       <SearchBar />
                     </div>
-                    <div className="mt-8 flex flex-wrap gap-4 animate-fade-in delay-300">
+                    <div className="mt-8 flex flex-wrap gap-4 delay-300">
                       <Link 
                         href={"/mortgage-calculator"}
                         className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md inline-flex items-center transition-all duration-300 shadow-lg hover:shadow-purple-600/20"
@@ -127,7 +127,7 @@ export default function HomePage() {
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
                     <Link 
-                      href={"#"}
+                      href={"/viewProperty"}
                       className="bg-white text-purple-900 hover:bg-purple-100 px-8 py-3 rounded-md inline-flex items-center transition-all duration-300 shadow-xl"
                     >
                       Get Started
