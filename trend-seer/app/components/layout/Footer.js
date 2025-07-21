@@ -38,7 +38,7 @@ export default function Footer() {
                         <Link href="/mortgage-calculator" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Mortgage Calculator</Link>
                       </li>
                       <li>
-                        <Link href="/auth" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Login / Register</Link>
+                        <Link href="/" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Login / Register</Link>
                       </li>
                     </ul>
                   </div>
@@ -47,16 +47,16 @@ export default function Footer() {
                     <h3 className="text-white font-medium mb-4">Resources</h3>
                     <ul className="space-y-2">
                       <li>
-                        <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Help Center</a>
+                        <Link href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Help Center</Link>
                       </li>
                       <li>
                         <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Mortgage Guide</a>
                       </li>
                       <li>
-                        <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Property Tips</a>
+                        <Link href="/mortgage-calculator" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Property Tips</Link>
                       </li>
                       <li>
-                        <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Blog</a>
+                        <Link href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">Blog</Link>
                       </li>
                     </ul>
                   </div>
