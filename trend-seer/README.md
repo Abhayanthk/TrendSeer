@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TrendSeer
+
+[**Live Demo**](https://trend-seer-kyqh.vercel.app/)
+
+## Project Overview
+
+1. **Real Estate Marketplace**: Built a property platform with detailed listings and dedicated project data views.
+2. **Mortgage Calculator**: Created a financial tool with real-time Chart.js visualizations for loan estimates.
+3. **Search & Sort System**: Implemented efficient data filtering for navigating property datasets.
+4. **Modern UI Stack**: Designed a responsive dark-mode interface using Next.js, Tailwind CSS, and Firebase.
 
 ## Getting Started
 
